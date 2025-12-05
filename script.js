@@ -8,6 +8,7 @@ let selectedSubjects = ['语文', '数学', '英语', '日语', '物理', '化�
 let animationsEnabled = true; // 动画效果开关
 let soundEnabled = true; // 声音效果开关
 let audioContext = null; // Web Audio API上下文
+let autoStartTimer = null; // 自动开始赛跑的计时器
 
 // DOM元素缓存
 const settingsPanel = document.getElementById('settingsPanel');
@@ -77,6 +78,13 @@ function initGame() {
     
     // 默认加载Excel文件
     loadExcel('card.csv');
+
+    // 设置5秒自动开始赛跑的计时器
+autoStartTimer = setTimeout(() => {
+    if (students.length > 0 && !gameRunning) {
+        startRace();
+    }
+}, 5000);
     
     // 绑定事件（添加存在性检查）
     if (playBtn) playBtn.addEventListener('click', startRace);
@@ -706,6 +714,12 @@ function startRace() {
     if (!playBtn) {
         console.error('播放按钮未找到');
         return;
+    }
+
+     // 清除自动开始计时器
+    if (autoStartTimer) {
+        clearTimeout(autoStartTimer);
+        autoStartTimer = null;
     }
     
     // 初始化音频上下文（首次点击时）
