@@ -76,7 +76,7 @@ function initGame() {
     updateButtonVisibility('initial');
     
     // 默认加载Excel文件
-    loadExcel('2304班11月月考联考成绩（对比版）.xlsx');
+    loadExcel('card.csv');
     
     // 绑定事件（添加存在性检查）
     if (playBtn) playBtn.addEventListener('click', startRace);
