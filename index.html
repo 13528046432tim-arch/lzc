@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小青蛙赛跑</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导入提示 -->
+    <div class="import-notice" id="importNotice">
+        请导入成绩表以开始游戏
+    </div>
+  <!-- 赛道样式 -->
+    <div class="track" id="track">
+        <!-- 青蛙将通过JavaScript动态生成 -->
+    </div>
+    
+    <div class="controls">
+        <button class="control-btn" id="settingsBtn" title="设置">⚙️</button>
+        <button class="control-btn" id="playBtn" title="播放">▶️</button>
+        <button class="control-btn" id="toggleToLeaderboard" title="切换到排行榜">🏆</button>
+    </div>
+    
+    <!-- 排行榜 -->
+    <div class="leaderboard" id="leaderboard">
+        <div class="leaderboard-header">
+            <h2>总分榜</h2>
+            <button id="toggleToScores" class="toggle-btn">📊</button>
+        </div>
+        <ul id="rankings"></ul>
+    </div>
+    
+    <!-- 设置面板 -->
+    <div class="settings-panel" id="settingsPanel">
+        <h3>设置</h3>
+        <div class="setting-item">
+            <label for="importBtn">导入成绩表:</label>
+            <div class="file-input-wrapper">
+                <input type="file" id="importBtn" accept=".csv,.xlsx,.xls">
+                <div class="btn">选择文件</div>
+            </div>
+        </div>
+        <div class="setting-item">
+            <label for="raceTimeInput">赛跑时间 (秒):</label>
+            <input type="number" id="raceTimeInput" min="1" max="30" value="5">
+        </div>
+        <div class="setting-item">
+            <label for="animationToggle">启用动画效果:</label>
+            <input type="checkbox" id="animationToggle" checked>
+        </div>
+        <div class="setting-item">
+            <label for="soundToggle">启用声音效果:</label>
+            <input type="checkbox" id="soundToggle" checked>
+        </div>
+        <button id="closeSettings">关闭</button>
+    </div>
+    
+    <!-- 成绩显示窗口 -->
+    <div class="score-window" id="scoreWindow">
+        <h3 id="scoreWindowTitle">学生成绩</h3>
+        <div id="scoreContent"></div>
+        <button id="closeScoreWindow">关闭</button>
+    </div>
+    
+    <!-- 成绩榜单面板 -->
+    <div class="scores-panel leaderboard" id="scoresPanel">
+        <div class="subject-tabs">
+            <button class="tab-btn active" data-subject="语文">语文</button>
+            <button class="tab-btn" data-subject="数学">数学</button>
+            <button class="tab-btn" data-subject="英语">英语</button>
+            <button class="tab-btn" data-subject="日语">日语</button>
+            <button class="tab-btn" data-subject="物理">物理</button>
+            <button class="tab-btn" data-subject="化学">化学</button>
+            <button class="tab-btn" data-subject="生物">生物</button>
+            <button class="tab-btn" data-subject="地理">地理</button>
+        </div>
+        <ul id="scoresList">
+            <!-- 成绩数据将通过JavaScript动态生成 -->
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
